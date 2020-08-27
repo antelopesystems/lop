@@ -76,10 +76,12 @@ if (process.stdin.isTTY) {
 
 
 function parseJson(data) {
-  data = data.replace('\n', '', 'g');
-  data = "[" + data + "]";
-  data = (data.replace(/}{/g, "},{"));
-  data = JSON.stringify(data).replace(/}\\n{/g, "},{");
-  data = JSON.parse(JSON.parse(data))
-  return data;
+  data = data.split("\n");
+  return data.map((log) => {
+    try {
+      return JSON.parse(log);
+    } catch (error) {
+      return undefined;
+    }
+  }).filter(log => log);
 }
