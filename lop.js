@@ -30,7 +30,7 @@ program.action(function (input) {
     const date = new Date(epochSecond * 1000).toISOString();
 
     if(LOG_LEVEL[level] >= LOG_LEVEL[program.level]) {
-      if(program.appender && program.appender === appender) {
+      if(!program.appender || (program.appender && program.appender === appender)) {
         console.log(`(${appender}) ${(date)} ${level} : ${message}`);
 
         if(thrown) {
@@ -44,18 +44,6 @@ program.action(function (input) {
           });
         }
 
-      } else {
-        console.log(`(${appender}) ${(date)} ${level} : ${message}`);
-        if(thrown) {
-          const {
-            extendedStackTrace
-          } = thrown
-              
-          const stackTrace = extendedStackTrace.split("\n");
-          stackTrace.forEach((row) => {
-            console.log(row)
-          });
-        }
       }
     }  
   });
