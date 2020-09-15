@@ -26,10 +26,12 @@ program.action(function (input) {
     const {
       level, message, appender, instant:{epochSecond}, thrown
     } = log
+    
+    const date = new Date(epochSecond * 1000).toISOString();
 
     if(LOG_LEVEL[level] >= LOG_LEVEL[program.level]) {
       if(program.appender && program.appender === appender) {
-        console.log(`(${appender}) ${Date(epochSecond)} ${level} : ${message}`);
+        console.log(`(${appender}) ${(date)} ${level} : ${message}`);
 
         if(thrown) {
           const {
@@ -43,7 +45,7 @@ program.action(function (input) {
         }
 
       } else {
-        console.log(`(${appender}) ${Date(epochSecond)} ${level} : ${message}`);
+        console.log(`(${appender}) ${(date)} ${level} : ${message}`);
         if(thrown) {
           const {
             extendedStackTrace
