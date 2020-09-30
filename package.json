@@ -1,5 +1,5 @@
 {
-  "name": "lop",
+  "name": "@antelope/lop",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Antelope Systems Dev",
+  "license": "CC-BY 3.0",
+  "bugs": {
+    "url": "https://github.com/antelopesystems/lop/issues"
+  },
+  "homepage": "https://github.com/antelopesystems/lop#readme",
   "dependencies": {
     "commander": "^6.0.0"
   }
